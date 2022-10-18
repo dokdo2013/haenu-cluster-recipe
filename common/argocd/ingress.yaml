@@ -11,7 +11,7 @@ metadata:
   namespace: argocd
 spec:
   rules:
-  - host: argo.pyeong.tech
+  - host: argo.haenu.xyz
     http:
       paths:
         - path: /
