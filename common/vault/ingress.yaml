@@ -2,25 +2,22 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   annotations:
-    kubernetes.io/ingress.global-static-ip-name: "k8s-ip" # gcp의 static ip
-    networking.gke.io/managed-certificates: managed-cert # gcp certification
-    networking.gke.io/v1beta1.FrontendConfig: "https-redirect"
     kubernetes.io/ingress.class: gce
-    kubernetes.io/ingress.allow-http: "false" # http port 노출할 것인지 결정합니다. 미설정시 true가 기본값입니다.
+    # kubernetes.io/ingress.allow-http: "false" # http port 노출할 것인지 결정합니다. 미설정시 true가 기본값입니다.
     # kubernetes.io/ingress.global-static-ip-name: ysyukr-external-pip # 고정 IP 사용시 리전 귀속 IP가 아닌, 전역 IP만 연결이 가능합니다.
     # networking.gke.io/managed-certificates: gcp-managed-acme-cert
     # networking.gke.io/v1beta1.FrontendConfig: ysyukr-frontendconfig
-  name: argocd-ingress
-  namespace: argocd
+  name: vault-ingress
+  namespace: vault
 spec:
   rules:
-  - host: argo.pyeong.tech
+  - host: vault.pyeong.tech
     http:
       paths:
         - path: /
           pathType: Prefix
           backend:
             service:
-              name: argocd-server
+              name: vault
               port:
-                number: 443
+                number: 8200
