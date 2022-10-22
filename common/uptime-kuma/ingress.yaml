@@ -2,18 +2,19 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   annotations:
+    kubernetes.io/ingress.allow-http: "true"
     kubernetes.io/ingress.class: gce
-  name: redis-ingress
-  namespace: vault
+  name: uptime-kuma-ingress
+  namespace: uptime-kuma
 spec:
   rules:
-  - host: ejnmeal-redis.k8s.pyeong.tech
+  - host: kuma.k8s.pyeong.tech
     http:
       paths:
         - path: /
           pathType: Prefix
           backend:
             service:
-              name: ejnmeal-redis-master
+              name: uptime-kuma
               port:
-                number: 6379
+                number: 6600
