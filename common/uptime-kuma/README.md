@@ -10,3 +10,6 @@
 ## Deployment
 - ArgoCD
 - https://kuma.k8s.pyeong.tech
+
+## GKE
+Change compute engine health check path `/` to `/dashboard`
