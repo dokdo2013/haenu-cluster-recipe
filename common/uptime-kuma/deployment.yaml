@@ -39,10 +39,10 @@ spec:
               scheme: HTTP
           resources:
             limits:
-              cpu: "0.5"
+              cpu: "0.3"
               memory: 512Mi
             requests:
-              cpu: "0.2"
+              cpu: "0.1"
               memory: 128Mi
       volumes:
         - name: storage
